@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+//    То куда производится сборка, в нашем случае это не особо важно так как собираем с помощью webpack
+    "outDir": "./dist/",
+    "baseUrl": "src",
+//    Подсвечивает все места где не указан тип
+//    Однако это не означает что теперь вовсе нельзя использовать any
+//    Это означает что в таких местах разраб должен явно указать any
+    "noImplicitAny": true,
+//    Указываем модуль системы
+    "module": "ESNext",
+//    куазываем версию стандарта в который наш код будет компилироваться
+    "target": "ESNext",
+    "jsx": "react-jsx",
+//    Позволяет компилятору обрабатывать не только ts-файлы но и js-файлы.
+    "allowJs": true,
+//    Определяет то какие импорты будут. Может принимать значения 'node' или 'classic'. Чаще используется 'node'.
+    "moduleResolution": "node",
+//    Для абсолютного импорта
+//    "baseUrl": ".",
+    // esModuleInterop позволяет работать с пакетами. которые используют
+     // common js как с обычными пакетамис помощью (import require() module.export) - такая система называется common js
+     // import Moment from 'moment';
+    //   без флага esModuleInterop результат undefindet
+    //    console.log(Momement);
+    //    c флагом результат [ object Object];
+    "esModuleInterop": true,
+//    Если какая либо библиотека на имеет default export,
+//    лоадеры вроде ts-loader или babel-loader автоматически создают их
+//    вместо такого импорта
+//    import * as React from 'react';
+//    можно писать такой
+//    import React from 'react';
+    "allowSyntheticDefaultImports": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}
